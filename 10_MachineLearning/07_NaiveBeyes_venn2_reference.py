@@ -3,11 +3,11 @@ from matplotlib import pyplot as plt
 
 plt.figure(figsize=(4, 3))
 
-# the subset sizes and set labels
+# サブセットとラベルの指定
 venn = venn2(subsets=(0.4, 0.4, 0.1), set_labels=('X', 'Y'))
 venn2_circles(subsets=(0.4, 0.4, 0.1), linestyle='solid', linewidth=1, color='black')
 
-# circle color to white and remove labels
+# 色とラベル非表示の設定
 venn.get_patch_by_id('10').set_color('white')
 venn.get_patch_by_id('01').set_color('white')
 venn.get_patch_by_id('11').set_color('white')
@@ -15,21 +15,21 @@ venn.get_label_by_id('10').set_text('')
 venn.get_label_by_id('01').set_text('')
 venn.get_label_by_id('11').set_text('')
 
-# diplay U
+# ユニバースUの表示
 plt.text(-0.6, 0.56, 'U', ha='center', va='center', color='black', fontsize=14)
 
-# change font size of labels and position
+# ラベルのフォントサイズと表示位置の調整
 for label in venn.set_labels:
     label.set_fontsize(14)
     label.set_y(label.get_position()[1] + 0.965)
     
-# set linewidth
+# 枠線の作成
 plt.gca().spines['top'].set_linewidth(1)
 plt.gca().spines['right'].set_linewidth(1) 
 plt.gca().spines['bottom'].set_linewidth(1)
 plt.gca().spines['left'].set_linewidth(1)
 
-# display figure
+# 図の表示
 plt.tight_layout()
 plt.axis('on')
 plt.show()
