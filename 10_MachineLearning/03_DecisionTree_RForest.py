@@ -34,7 +34,7 @@ for i in range(4):
                           marker=markers[target])
       axs[i, j].set_xlabel(jp_feature_names[i])
       axs[i, j].set_ylabel(jp_feature_names[j])
-      axs[i, j].legend()
+      axs[i, j].legend(fontsize=10).get_frame().set_alpha(0.45)
 plt.tight_layout()
 plt.show()
 

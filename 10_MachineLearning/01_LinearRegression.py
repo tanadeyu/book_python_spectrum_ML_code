@@ -46,8 +46,10 @@ y_pred = model.predict(X_test)
 # モデルの評価(平均二乗誤差)
 mse = mean_squared_error(y_test, y_pred)
 print('MSE:', mse)
-bias = model.intercept_
-print("Bias:", bias)
+
+#切片と係数
+print("Bias:", model.intercept_) #切片
+print("Coef:", model.coef_) #係数
  
 # 予測値と実際の値のプロット
 fig = plt.figure(figsize=(3, 6))
