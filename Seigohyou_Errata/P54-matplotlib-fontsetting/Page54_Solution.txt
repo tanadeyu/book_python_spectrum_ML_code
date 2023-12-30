@@ -1,0 +1,48 @@
+正誤表ならびにアップデート予定の内容
+
+
+・P54のmatplotlibのreinstallでOSのフォントを認識するの部分について
+
+[問題]
+matplotlibの再起動で、フォントが認識されない。
+
+
+[解決策]
+実際には、所定位置のファイルmatplotlibrcにFontの記述を追加し、
+ローカルの～.jsonのファイルを削除、
+カーネル再起動の手順が必要であると考えられる。
+matplotlibの再インストールは、不要の可能性が高い。
+
+
+[詳細について]
+import matplotlib
+print(matplotlib.matplotlib_fname())
+を実行し、matplotlibrcの場所を探して、
+matplotlibrcをメモ帳などで開く
+（念のため別名でバックアップしてください））
+
+matplotlibrcに追加したフォント名の記述を
+他の行の前に新しい行に追加（#font.family:で始まる前の行など）
+
+（例）
+font.family:  Noto Sans JP
+
+print(matplotlib.get_configdir())を
+実行し、～.jsonを削除する。
+（fontlist-v330.jsonなど）
+
+
+その後、Spyderなどで、カーネル再起動すると、
+～.jsonが作られ、
+import matplotlib
+print(matplotlib.matplotlib_fname())で、リストが更新される。
+
+その後に
+plt.rcParams['font.family'] = 'Noto Sans JP'で
+フォントファミリーを指定して、matplotlibを利用する。
+
+
+
+※フォルダに含まれるpyファイルはFont位置のチェックと、
+登録されているFontの確認を行うためのサンプルファイルとなります。
+
